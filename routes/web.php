@@ -1,18 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController as Login;
+use App\Http\Controllers\Dashboard\PurchasingController as Purchase;
+use App\Http\Controllers\Dashboard\ItemController as Item;
+use App\Http\Controllers\Dashboard\VendorController as Vendor;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::get("/",[Login::class,"login"]);
+Route::post("/login",[Login::class,"postlogin"]);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::group();
