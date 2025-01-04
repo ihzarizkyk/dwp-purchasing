@@ -13,6 +13,6 @@ class Category extends Model
 
     public function request()
     {
-        return $this->belongsTo(Request::class);
+        return $this->belongsTo(Req::class);
     }
 }
