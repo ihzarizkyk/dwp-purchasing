@@ -18,7 +18,9 @@ class PurchasingController extends Controller
 
     public function index()
     {
-        return view("dashboard.purch");
+        $ar = Req::all();
+        $ns = Req::where("user_id",Auth::user()->id)->get();
+        return view("dashboard.purch",compact("ar","ns"));
     }
 
     public function requests()

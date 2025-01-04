@@ -5,9 +5,48 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-	<title>Document</title>
+	<title>Request Purchasing - Dashboard</title>
 </head>
 <body>
+
+<div class="container">
+	 
+<div class="row mt-3 mb-3">
+	
+	<div class="col-md-6 col-12">
+		
+    <form action="/dashboard/purchasing/postrequest" method="POST">
+    	
+    	<div class="mb-3">
+    		<label for="Category">
+    			Category
+    		</label>
+    		<select class="form-control" name="category" id="category">
+    			<option selected disabled>Pilih Kategori</option>
+    			@foreach($category as $c)
+    			<option value="{{ $c->id }}">{{ $c->name }}</option>
+    			@endforeach
+    		</select>
+    	</div>
+
+    	<div class="mb-3">
+    		<label for="description">
+    			Description
+    		</label> 
+    		<textarea class="form-control" name="description" id=""></textarea>  		
+    	</div>
+
+    	<div class="mb-3">
+    		<input type="submit" name="requests" class="btn btn-md btn-success" value="Requests Purchasing">
+    	</div>
+
+    </form>
+
+	</div>
+
+</div> 
+
+</div>	 	 	 	 	 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>	
 </body>

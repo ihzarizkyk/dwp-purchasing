@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-	<title>E-purchasing</title>
+	<title>E-purchasing - DWP 2025</title>
 </head>
 <style>
 	body{
@@ -14,9 +14,9 @@
 </style>
 <body>
 
-	<div class="container-fluid">
+	<div class="container-fluid mb-5 px-3 py-3">
 
-		<div class="row mt-3 mb-3">
+		<div class="row mt-3 mb-3 justify-content-center">
 
 			<div class="col-md-6 col-12">
 
@@ -26,7 +26,7 @@
      					<h1>E-Purchasing for DWP</h1>
 
 		     			<form name="fLogin" action="/postlogin" method="POST">
-
+		     				@csrf
 							<div class="mb-3">
 								<label class="form-label" for="username">
 									Username

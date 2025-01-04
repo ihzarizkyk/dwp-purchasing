@@ -30,9 +30,11 @@ class LoginController extends Controller
         {
             $r->session()->regenerate();
 
-            return redirect("/dashboard");
+            dd($r);
+
+            return redirect("/dashboard/purchasing");
         }else{
-            return redirect("/login");
+            return redirect("/");
         };
     }
 

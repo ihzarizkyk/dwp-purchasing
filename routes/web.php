@@ -8,7 +8,8 @@ use App\Http\Controllers\Dashboard\ItemController as Item;
 use App\Http\Controllers\Dashboard\VendorController as Vendor;
 
 Route::get("/",[Login::class,"login"]);
-Route::post("/login",[Login::class,"postlogin"]);
+Route::post("/postlogin",[Login::class,"postlogin"]);
+Route::get("/logout",[Login::class,"logout"]);
 
 Route::get("/dashboard/purchasing",[Purchase::class,"index"]);
 Route::get("/dashboard/purchasing/request",[Purchase::class,"requests"]);

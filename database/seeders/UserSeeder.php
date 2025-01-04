@@ -26,18 +26,18 @@ class UserSeeder extends Seeder
             "name" => "employee",
             "email" => "emp@company.com",
             "role_id" => 2,
-            "password" => Hash::make("emp123")]);
+            "password" => Hash::make("emp12345")]);
 
         DB::table("users")->insert([
             "name" => "purchasing1",
             "email" => "p1@company.com",
             "role_id" => 3,
-            "password" => Hash::make("p123")]);
+            "password" => Hash::make("p1234567")]);
 
         DB::table("users")->insert([
             "name" => "vendor1",
             "email" => "ven1@company.com",
-            "role_id" => 3,
-            "password" => Hash::make("v123")]);
+            "role_id" => 4,
+            "password" => Hash::make("v1234567")]);
     }
 }
