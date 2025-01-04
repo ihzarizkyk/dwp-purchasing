@@ -30,7 +30,7 @@ class LoginController extends Controller
         {
             $r->session()->regenerate();
 
-            dd($r);
+            // dd($r);
 
             return redirect("/dashboard/purchasing");
         }else{
@@ -38,7 +38,7 @@ class LoginController extends Controller
         };
     }
 
-    public function logout()
+    public function logout(Request $r)
     {
         Auth::logout();
         $r->session()->invalidate();

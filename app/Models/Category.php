@@ -13,6 +13,6 @@ class Category extends Model
 
     public function request()
     {
-        return $this->belongsTo(Req::class);
+        return $this->belongsTo(Req::class,"category_id");
     }
 }

@@ -9,5 +9,10 @@ class Vendor extends Model
 {
     use HasFactory;
 
-    protected $table = "vendor";
+    protected $table = "vendors";
+
+    public function requests()
+    {
+        return $this->belongsTo(Req::class,"vendor_id");
+    }
 }

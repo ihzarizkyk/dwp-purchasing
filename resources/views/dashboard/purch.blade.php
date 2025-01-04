@@ -11,8 +11,20 @@
 
 <div class="container-fluid">
 
+	<div class="mb-3 mt-3 end">
+		<a href="/logout" class="btn btn-md btn-danger">
+			logout
+		</a>
+
+		<a href="/dashboard/purchasing/request" class="btn btn-md btn-secondary">
+			Request Purchasing
+		</a>
+	</div>
+
 	<div class="mb-3 mt-3">
-		<a href="/dashboard/purchasing/request" class="btn btn-md btn-secondary"></a>
+		<div class="alert alert-primary">
+			Selamat Datang, <b>{{ Auth::user()->name }}</b> !
+		</div>
 	</div>
 
        <table id="requests" class="table table-dark table-striped">
@@ -21,7 +33,7 @@
 			            <th scope="col">No</th>
 			            <th scope="col">Deskripsi</th>
 			            <th scope="col">Kategori</th>
-			            @if(Auth::user()->role_id == 1 && Auth::user()->role_id == 3 )
+			            @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 3 )
 			            <th scope="col">Action</th>
 			            @else
 			            @endif
@@ -31,11 +43,20 @@
 			        @php
 			            $no = 1;
 			        @endphp
-			        	@if(Auth::user()->role_id == 1 && Auth::user()->role_id == 3)
+			        	@if(Auth::user()->role_id == 1 || Auth::user()->role_id == 3)
 			                @foreach($ar as $ra)
 			                    <tr>
 			                        <td>{{ $no++ }}</td>
-			                        <td>{{ $ra->description }}</td>
+			                        <td> 
+			                        	@if($ra->status == "approve") 
+			                        	<span class="badge rounded-pill bg-success">approved</span>  
+			                        	@elseif($ra->status == "pending")
+			                        	<span class="badge rounded-pill bg-warning text-dark">pending</span>
+			                        	@else
+			                        	<span class="badge rounded-pill bg-danger">Rejected</span>
+			                        	@endif
+			                        	{{ $ra->description }}
+			                        </td>
 			                        <td>{{ $ra->category->name }}</td>
 			                        <td>
 			                        	<a href="/dashboard/purchasing/approve/{{ $ra->id }}" class="btn btn-sm text-white btn-success">Approve</a>
@@ -47,10 +68,20 @@
 			                @foreach($ns as $sn)
 			                    <tr>
 			                        <td>{{ $no++ }}</td>
-			                        <td>{{ $ra->description }}</td>
-			                        <td>{{ $ra->category->name }}</td>
+			                        <td>
+			                        	@if($ra->status == "approve") 
+			                        	<span class="badge rounded-pill bg-success">approved</span>  
+			                        	@elseif($ra->status == "pending")
+			                        	<span class="badge rounded-pill bg-warning text-dark">pending</span>
+			                        	@else
+			                        	<span class="badge rounded-pill bg-danger">Rejected</span>
+			                        	@endif
+			                        	{{ $sn->description }}
+			                        </td>
+			                        <td>{{ $sn->category->name }}</td>
 			                    </tr>
 			                @endforeach
+			              @endif
 			    </tbody>
 			</table>	
 

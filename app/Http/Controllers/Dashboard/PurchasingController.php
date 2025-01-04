@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Models\Req;
-use App\Http\Models\Category;
-use App\Http\Models\User;
+use App\Models\Req;
+use App\Models\Category;
+use App\Models\User;
+use App\Models\Vendor;
 
 class PurchasingController extends Controller
 {
@@ -26,8 +27,8 @@ class PurchasingController extends Controller
     public function requests()
     {
         $category = Category::all();
-
-        return view("dashboard.purchasing.request",compact("category"));
+        $vendor = Vendor::all();
+        return view("dashboard.purchasing.request",compact("category","vendor"));
     }
 
     public function postrequests(Request $req)
@@ -38,16 +39,17 @@ class PurchasingController extends Controller
         $purc = new Req;
         $purc->user_id = Auth::user()->id;
         $purc->category_id = $req->category ?? null;
+        $purc->vendor_id = $req->vendor ?? null;
         $purc->description = $req->description;
         $purc->status = "pending";
         $purc->save();
 
-        return redirect()->back()->with("success","purchasing has been requested");
+        return redirect("/dashboard/purchasing");
     }
 
     public function approve(Request $req,$id)
     {
-        if(Auth::user()->role_id == 1 && Auth::user()->role_id == 3) 
+        if(Auth::user()->role_id == 1 || Auth::user()->role_id == 3) 
         {
             $purc = Req::findOrFail($id);
             $purc->status = "approve";
@@ -61,7 +63,7 @@ class PurchasingController extends Controller
 
     public function reject(Request $req,$id)
     {
-        if(Auth::user()->role_id == 1 && Auth::user()->role_id == 3) 
+        if(Auth::user()->role_id == 1 || Auth::user()->role_id == 3) 
         {
             $purc = Req::findOrFail($id);
             $purc->status = "reject";

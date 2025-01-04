@@ -38,7 +38,7 @@
 								<label class="form-label" for="password">
 									Password
 								</label>
-								<input class="form-control" type="password" name="name" placeholder="Your Password">
+								<input class="form-control" type="password" name="password" placeholder="Your Password">
 							</div>
 
 							<div class="mb-3">

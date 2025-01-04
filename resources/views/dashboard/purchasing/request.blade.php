@@ -13,9 +13,19 @@
 	 
 <div class="row mt-3 mb-3">
 	
-	<div class="col-md-6 col-12">
+	<div class="col-md-8 col-12">
+
+	<div class="card">
+
+	<div class="card-body">
+			
+    <h1>Formulir Request Purchasing - DWP 2025</h1>
+
+    <p><b>dari:</b> {{Auth::user()->role->name}} </p>
 		
     <form action="/dashboard/purchasing/postrequest" method="POST">
+
+    	@csrf
     	
     	<div class="mb-3">
     		<label for="Category">
@@ -37,10 +47,28 @@
     	</div>
 
     	<div class="mb-3">
-    		<input type="submit" name="requests" class="btn btn-md btn-success" value="Requests Purchasing">
+    		<label for="Vendor">
+    			Vendor
+    		</label>
+    		<select class="form-control" name="vendor" id="vendor">
+    			<option selected disabled>Pilih Vendor</option>
+    			@foreach($vendor as $v)
+    			<option value="{{ $v->id }}">{{ $v->name }} , {{ $v->address }}</option>
+    			@endforeach
+    		</select>
     	</div>
 
-    </form>
+    	<div class="mb-3">
+    		<input type="submit" name="requests" class="btn btn-md btn-success" value="Requests Purchasing">
+    		<a href="/dashboard/purchasing" class="btn btn-md btn-danger">
+    			Back
+    		</a>
+    	</div>
+
+        </form>
+
+		</div>
+	</div>
 
 	</div>
 
