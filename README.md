@@ -4,7 +4,7 @@
 
 1. Login (Auth)
 2. Dashboard Page
-3. CRUD Purchasing - Dashboard
+3. Purchasing - Dashboard
 
 ## User Roles:
 
