@@ -13,4 +13,8 @@
 3. Purchasing
 4. Vendor
 
+## Security:
+
+1. Implement throttle on api routes
+
 &copy; 2025
